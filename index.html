@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/208e14b18c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet"></head>
+    <title>Initial Fantasy</title>
+<body>
+    <main>
+        <div id="startGame">
+            <p>Hello adventurous, I'm glad to see you came to help our hero to defeat <br> the goblin king who invaded this forest. <br> The path is full of powerfull enemies so be caferull on going ahead to quickly <br> since enemies get stronger and stronger as you move forward. <br> Sometimes may help go back and get stronger by defeating weaker enemies. <br> This is a rpg turn based, this means you can fight by declaring one action per turn. <br>
+            You will be able to acces the following tutorial everytime you need from the menu.
+        </p> <br> <button>Continue</button> </div>
+        <img id="right" src="./img/arrow.gif" alt="">
+        <img id="goblinKing" src="./img/goblinKing.gif" alt="">
+        <button id="mainMenu">Menu</button>
+        <div id="menu">
+            <button>Train</button>
+            <button>Use Items</button>
+            <button>Equipment</button>
+            <button>Tutorial</button>
+        </div>
+            <div id="train">
+                <h2>
+                    Experience: <span>0</span>
+                </h2>
+                <article>
+                    <h3>maxLP</h3> <span>32</span> <button value="LP">UP</button>
+                </article>
+                <article>
+                    <h3>maxAP</h3> <span>12</span> <button value="AP">UP</button>
+                </article>
+                <article>
+                    <h3>ATT</h3> <span>12</span> <button value="ATT">UP</button>
+                </article>
+                <article>
+                    <h3>DEF</h3> <span>8</span> <button value="DEF">UP</button>
+                </article>
+                <article>
+                    <h3>artATT</h3> <span>10</span> <button value="artATT">UP</button>
+                </article>
+                <article>
+                    <h3>artDEF</h3> <span>8</span> <button value="artDEF">UP</button>
+                </article> <br>
+                <article>
+                    <button value="back"><i class="fas fa-long-arrow-alt-left"></i></button>
+                </article>
+        </div>
+        <div id="useItems">
+            <button class="slot1">empty</button>
+            <button class="slot2">empty</button>
+            <button class="slot3">empty</button>
+        <div>
+                <span></span><span></span>
+            </div>
+            <button id="useItemsBack" value="back"><i class="fas fa-long-arrow-alt-left"></i></button>
+        </div>
+        <div id="equipmentMenu">
+            <div id="list">
+                <button>Silver Elmet<span>ATT +5 <br> LP +5</span></button>
+                <button>Regal Elmet<span>ATT +8 <br> LP +2</span></button>
+                <button>Silver Armor<span>DEF +5 <br> LP +5</span></button>
+                <button>Regal Armor<span>DEF +5 <br> artDEF +5</span></button>
+                <button>Magic Sword<span>artATT +10 <br> maxAP +10</span></button>
+                <button>Strong Sword<span>ATT +10 <br> LP +5</span></button>
+                <button>Silver Boots<span>ATT +4 <br> DEF +4</span></button>
+                <button>Regal Boots<span>ATT +3 <br> LP +20</span></button>
+                <button id="equipmentBack" value="back"><i class="fas fa-long-arrow-alt-left"></i></button>
+            </div>
+            <div id="showEq">
+                <div>
+                    <h4>Head</h4>
+                    <article>
+                        <img src="/img/silver elmet.jpg" alt="">
+                        <img src="./img/regal elmet.jpg" alt="">
+                    </article>
+                </div>
+                <div>
+                    <h4>Body</h4>
+                    <article>
+                        <img src="./img/silver armor.png" alt="">
+                        <img src="./img/regal armor.png" alt="">
+                    </article>
+                </div>
+                <div>
+                    <h4>Weapon</h4>
+                    <article>
+                        <img src="./img/magic sword.jpg" alt="">
+                        <img src="./img/strong sword.png" alt="">
+                    </article>
+                </div>
+                <div>
+                    <h4>Boots</h4>
+                    <article>
+                        <img src="./img/silver boots.png" alt="">
+                        <img src="./img/regal boots.png" alt="">
+                    </article>
+                </div>
+            </div>
+        </div>
+
+
+        <img id="characterPG" src="./img/0a93f1860c438efd1ad61863d5d6d312.gif" alt="">
+        <p id="messageField">You are under attack!</p>
+        <article id="message"></article>
+        <section>
+            <div class="buttons">
+                <div class="items"></div>
+                <button id="attack"><img src="/img/attackIcon.png"> Attack <img id="right" src="./img/attackIcon.png"></button>
+                <button id="items"><img src="./img/potionIcon.png"> Items <img src="./img/potionIcon.png"></button>
+                <button id="arts"><img src="./img/magicIcon.png"> Arts <img src="./img/magicIcon.png"></button>
+                <button id="flee">Flee</button>
+            </div>
+            <div class="artsMenu">
+                <button><img src="./img/magicIcon.png">Koi<img src="./img/magicIcon.png"></button>
+                <button><img src="./img/magicIcon.png">Ken<img src="./img/magicIcon.png"></button>
+                <button><img src="./img/magicIcon.png">Kik<img src="./img/magicIcon.png"></button>
+                <button class="goBack"><i class="fas fa-long-arrow-alt-left"></i></button>
+            </div>
+            <div class="itemsMenu">
+                <button class="slot1">empty</button>
+                <button class="slot2">empty</button>
+                <button class="slot3">empty</button>
+                <button class="goBack"><i class="fas fa-long-arrow-alt-left"></i></button>
+            </div>
+            
+            <div class="LAP">
+                <div id="LP">
+                </div>
+                <div id="AP">
+                </div>
+            </div>
+            <section class="enemiesDataContainer">
+                <div>
+                    <h5></h5>
+                    <article id="enemy1LP"></article>
+                </div>
+                <div>
+                    <h5></h5>
+                    <article id="enemy2LP"></article>
+                </div>
+            </section>
+            <h2>Your turn</h2>
+        </section>
+        <div id="enemy1"></div>
+        <div id="enemy2"></div>
+        <div id="damageAnimation"></div>
+        <div class="attackAnimation"></div>
+        <button id="continue">Continue</button>
+
+    </main>
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

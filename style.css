@@ -1,0 +1,535 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight: bolder;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: orange;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid orange;
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+main {
+  height: 500px;
+  width: 1000px;
+  margin: 100px auto;
+  border: black solid 3px;
+  background-image: url("./img/darkForestEntrance.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  position: relative;
+}
+
+main button {
+  cursor: pointer;
+}
+
+main button:focus {
+  outline: none;
+}
+
+main img {
+  height: 160px;
+  width: 160px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+main #right {
+  left: unset;
+  right: -50px;
+}
+
+main #goblinKing {
+  height: 250px;
+  left: unset;
+  right: 0;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+  display: none;
+}
+
+main #startGame {
+  background-image: url("./img/parchment.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 390px;
+  text-align: center;
+  padding: 50px;
+}
+
+main #startGame p {
+  position: unset;
+  color: black;
+  background-color: transparent;
+  display: unset;
+  font-size: 16px;
+}
+
+main #startGame span {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+main #startGame button {
+  margin-top: 10px;
+  border-radius: 25px;
+  background-color: transparent;
+  padding: 5px;
+  color: brown;
+  border: brown 2px solid;
+  background-color: greenyellow;
+}
+
+main p {
+  position: absolute;
+  text-align: center;
+  left: 40%;
+  top: 20%;
+  color: white;
+  background-color: red;
+  font-size: 32px;
+  display: none;
+}
+
+main article {
+  position: absolute;
+  text-align: center;
+  left: 30%;
+  top: 45%;
+  color: black;
+  font-size: 42px;
+  font-weight: bold;
+  display: block;
+}
+
+main #mainMenu {
+  width: 100px;
+  height: 50px;
+  float: left;
+  display: none;
+  color: brown;
+  border: brown 2px solid;
+  background-color: greenyellow;
+  border-radius: 25px;
+}
+
+main #menu {
+  width: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: black solid 2px;
+  margin: 0 auto;
+  border-radius: 20px;
+  display: none;
+  background: url("https://i.pinimg.com/564x/d1/89/b7/d189b7b2fd7ac770be05bb418af1adfd.jpg");
+}
+
+main #menu button {
+  height: 50px;
+  margin: 10px auto;
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 20px;
+  padding: 5px;
+  color: brown;
+  border: brown 2px solid;
+  background-color: greenyellow;
+}
+
+main #train {
+  width: 550px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: black solid 2px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("./img/book.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./img/book.jpg");
+  color: white;
+  background-size: cover;
+  margin: 0 auto;
+  display: none;
+  text-align: center;
+}
+
+main #train h2 {
+  text-align: center;
+}
+
+main #train article {
+  position: unset;
+  font-size: 18px;
+  padding: 10px 50px;
+  display: inline-block;
+  color: white;
+}
+
+main #train article h3 {
+  display: inline;
+  padding-right: 20px;
+}
+
+main #train article button {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  border-radius: 20px;
+}
+
+main #useItems {
+  width: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: black solid 2px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("https://i.pinimg.com/564x/e2/cb/99/e2cb99ae9f3745ca3b2e0ef43b143684.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://i.pinimg.com/564x/e2/cb/99/e2cb99ae9f3745ca3b2e0ef43b143684.jpg");
+  background-position: center;
+  background-size: cover;
+  margin: 0 auto;
+  display: none;
+}
+
+main #useItems button {
+  margin: 0 25%;
+  width: 50%;
+  height: 40px;
+  background-color: orange;
+  border-radius: 25px;
+}
+
+main #useItems button:focus {
+  outline: none;
+}
+
+main #useItems #useItemsBack {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0 10px;
+  margin: 10px 45%;
+}
+
+main #useItems div {
+  height: 70px;
+  padding: 0 30px;
+  font-size: 21px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+main #equipmentMenu {
+  height: 300px;
+  width: 550px;
+  margin: 0 auto;
+  display: none;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("./img/RPG United - Dungeons & Dragons T-Shirt - The Shirt List.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./img/RPG United - Dungeons & Dragons T-Shirt - The Shirt List.jpg");
+  background-position: center;
+  position: relative;
+}
+
+main #equipmentMenu #list {
+  width: 45%;
+  height: 100%;
+  border: 3px midnightblue solid;
+  overflow: auto;
+}
+
+main #equipmentMenu #list button {
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+  padding: 0 10px;
+  font-size: 14px;
+  display: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: orange;
+  border: 1px midnightblue solid;
+}
+
+main #equipmentMenu #list #equipmentBack {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 10px;
+  border-radius: 25px;
+  position: absolute;
+  bottom: 10px;
+  left: -40px;
+}
+
+main #equipmentMenu #showEq {
+  width: 55%;
+  height: 100%;
+  border: 3px midnightblue solid;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+main #equipmentMenu #showEq h4 {
+  color: orange;
+}
+
+main #equipmentMenu #showEq article {
+  position: unset;
+  border: 3px orange solid;
+  height: 105px;
+  width: 105px;
+  border-radius: 25px;
+}
+
+main #equipmentMenu #showEq article img {
+  position: unset;
+  height: 100px;
+  width: 100px;
+  display: none;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+main section {
+  float: right;
+  height: 100%;
+  width: 300px;
+  border-left: 3px black solid;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("https://i.pinimg.com/564x/41/1b/c6/411bc69d850300da0feaa7528a1f52e0.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://i.pinimg.com/564x/41/1b/c6/411bc69d850300da0feaa7528a1f52e0.jpg");
+}
+
+main section .LAP {
+  font-size: 28px;
+  color: orange;
+}
+
+main section .buttons {
+  height: 200px;
+  width: 200px;
+  border: solid 3px orange;
+}
+
+main section .buttons button {
+  width: 100%;
+  height: 25%;
+  background: -webkit-gradient(linear, left top, right top, from(#141e30), to(#243b55));
+  background: linear-gradient(to right, #141e30, #243b55);
+  color: orange;
+}
+
+main section .buttons button img {
+  position: unset;
+  height: 30px;
+  width: 30px;
+  margin: 0 10px;
+  display: none;
+}
+
+main section .buttons button #right {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+main section .itemsMenu {
+  height: 200px;
+  width: 200px;
+  border: solid 3px orange;
+  display: none;
+}
+
+main section .itemsMenu button {
+  width: 100%;
+  height: 25%;
+  background: -webkit-gradient(linear, left top, right top, from(#141e30), to(#243b55));
+  background: linear-gradient(to right, #141e30, #243b55);
+  color: orange;
+}
+
+main section .artsMenu {
+  height: 200px;
+  width: 200px;
+  border: solid 3px orange;
+  display: none;
+}
+
+main section .artsMenu button {
+  width: 100%;
+  height: 25%;
+  background: -webkit-gradient(linear, left top, right top, from(#141e30), to(#243b55));
+  background: linear-gradient(to right, #141e30, #243b55);
+  color: orange;
+}
+
+main section .artsMenu button img {
+  position: unset;
+  height: 30px;
+  width: 30px;
+  margin: 0 10px;
+  display: none;
+}
+
+main section h2 {
+  color: orange;
+  font-size: 30px;
+  width: 250px;
+  text-align: center;
+}
+
+main #enemy1 {
+  position: absolute;
+  cursor: pointer;
+  left: 400px;
+  bottom: 0;
+}
+
+main #enemy1 img {
+  width: 150px;
+  height: 150px;
+  z-index: 1;
+}
+
+main #damageAnimation {
+  font-size: 28px;
+  height: 140px;
+  width: 200px;
+  color: red;
+  text-align: center;
+  position: absolute;
+  left: 400px;
+  bottom: 0;
+}
+
+main .attackAnimation {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  left: 400px;
+  bottom: 0;
+}
+
+main .attackAnimation img {
+  height: 150px;
+  width: 150px;
+}
+
+main #enemy2 {
+  position: absolute;
+  cursor: pointer;
+  left: 200px;
+  bottom: 100px;
+}
+
+main #enemy2 img {
+  width: 150px;
+  height: 150px;
+  z-index: 1;
+}
+
+main .enemiesDataContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background: transparent;
+  width: 100%;
+  font-size: 21px;
+  border: unset;
+  color: orange;
+}
+
+main .enemiesDataContainer div {
+  text-align: center;
+}
+
+main .enemiesDataContainer div article {
+  position: unset;
+  font-size: 21px;
+  color: orange;
+}
+
+main #continue {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  bottom: 50px;
+  left: 40%;
+  font-size: 24px;
+}
+/*# sourceMappingURL=style.css.map */
