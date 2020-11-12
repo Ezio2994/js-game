@@ -1,7 +1,8 @@
 import enemiesData from './dataBase.js'
 import {itemsBag} from './dataBase.js'
 
-
+const mute = document.querySelector('#mute')
+const audio = document.querySelector('audio')
 const startGame = document.querySelector('#startGame')
 const startGameText = document.querySelector('#startGame p')
 const startGameButton = document.querySelector('#startGame button')
@@ -63,6 +64,12 @@ const plantVenom = `<img src="./img/plantVenom.gif">`
 const sonicAttack = `<img src="./img/sonicAttack.gif">`
 const negativeAura = `<img src="./img/negativeAura.gif">`
 const crushAttack = `<img src="./img/crushAttack.gif">`
+const blueFlames = `<img src="./img/blueFlames.gif">`
+const bomb = `<img src="./img/bomb.gif">`
+const confusion = `<img src="./img/confusion.gif">`
+const electroShock = `<img src="./img/electroShock.gif">`
+const energicBomb = `<img src="./img/energicBomb.gif">`
+const fire = `<img src="./img/fire.gif">`
 
 
 let page = 0;
@@ -75,6 +82,7 @@ let action = false;
 let clicked = false
 let enemy1Be;
 let enemy2Be;
+let whichEnemy = 1
 let enemySpots;
 let battleExperience = 0;
 let totalExperience = 0;
@@ -89,10 +97,20 @@ const characterStats = {
     LP: 32,
     maxAP: 12,
     AP: 12,
-    ATT: 12,
+    ATT: 120,
     DEF: 8,
     artATT: 10,
     artDEF: 8
+}
+
+mute.onclick = () => {
+    if (audio.muted === false) {
+        audio.muted = true
+        mute.innerHTML = '<i class="fas fa-volume-mute"></i>'
+    } else {
+        audio.muted = false
+        mute.innerHTML = '<i class="fas fa-volume-up"></i>'
+    }
 }
 
 startGameButton.onclick = () => {
@@ -149,7 +167,7 @@ const updateMenu = () => {
     useItemsStats[0].innerText = `LP: ${characterStats.LP}/${characterStats.maxLP}`
     useItemsStats[1].innerText = `AP: ${characterStats.AP}/${characterStats.maxAP}` 
     characterLP.innerHTML = `LP: ${characterStats.LP}/${characterStats.maxLP}`
-    characterAP.innerHTML = `AP: ${characterStats.LP}/${characterStats.maxLP}`
+    characterAP.innerHTML = `AP: ${characterStats.AP}/${characterStats.maxAP}`
 }
 
 useItemsButtons.forEach(button => {
@@ -177,12 +195,12 @@ upBottons.forEach(button => {
             characterStats.maxLP ++
             totalExperience -= 5;
             statsValue[0].innerText = characterStats.maxLP
-            charactermaxLP.innerHTML = characterStats.maxLP
+            characterLP.innerHTML = characterStats.maxLP
         } else if (button.value === 'AP' && totalExperience >= 5) {
             characterStats.maxAP ++
             totalExperience -= 5;
             statsValue[1].innerText = characterStats.maxAP
-            charactermaxAP.innerHTML = characterStats.maxAP
+            characterAP.innerHTML = characterStats.maxAP
         } else if (button.value === 'ATT' && totalExperience >= 5) {
             characterStats.ATT ++
             totalExperience -= 5;
@@ -456,7 +474,7 @@ const enemy = () => {
         } if (random < 2) {
             enemy2Be = enemiesData[3].name
         } else {
-            enemy1Be = enemiesData[1].name
+            enemy2Be = enemiesData[1].name
         }
         enemySpots = 5;
         prepareBattle()
@@ -468,7 +486,7 @@ const enemy = () => {
         } if (random < 2) {
             enemy2Be = enemiesData[3].name
         } else {
-            enemy1Be = enemiesData[1].name
+            enemy2Be = enemiesData[1].name
         }
         enemySpots = 6;
         prepareBattle()
@@ -497,9 +515,57 @@ const enemy = () => {
         enemy2Be = enemiesData[4].name
         enemySpots = 7;
         prepareBattle()
+    } else if (character.style.left == '260px' && random < 3 && scenario === 2) {
+        if (random < 2) {
+            enemy1Be = enemiesData[4].name
+        } else {
+            enemy1Be = enemiesData[5].name
+        }
+        enemy2Be = enemiesData[5].name
+        enemySpots = 8;
+        prepareBattle()
+    } else if (character.style.left == '350px' && random < 3 && scenario === 2) {
+        if (random < 2) {
+            enemy1Be = enemiesData[5].name
+        } else {
+            enemy1Be = enemiesData[6].name
+        }
+        enemy2Be = enemiesData[4].name
+        enemySpots = 9;
+        prepareBattle()
+    } else if (character.style.left == '400px' && random < 3 && scenario === 2) {
+        if (random < 2) {
+            enemy1Be = enemiesData[6].name
+        } else {
+            enemy1Be = enemiesData[5].name
+        }
+        enemy2Be = enemiesData[5].name
+        enemySpots = 10;
+        prepareBattle()
+    } else if (character.style.left == '520px' && random < 3 && scenario === 2) {
+        if (random < 2) {
+            enemy1Be = enemiesData[7].name
+        } else {
+            enemy1Be = enemiesData[6].name
+        }
+        enemy2Be = enemiesData[6].name
+        enemySpots = 11;
+        prepareBattle()
+    } else if (character.style.left == '600px' && random < 3 && scenario === 2) {
+        if (random < 2) {
+            enemy1Be = enemiesData[7].name
+        } else {
+            enemy1Be = enemiesData[6].name
+        }
+        enemy2Be = enemiesData[7].name
+        enemySpots = 12;
+        prepareBattle()
+    } else if (character.style.left == '680px' && scenario === 2) {
+        enemy1Be = enemiesData[8].name
+        enemySpots = 13;
+        prepareBattle()
     }
 }      
-
 
 const prepareBattle = () => {
     movement = false
@@ -508,10 +574,10 @@ const prepareBattle = () => {
     setTimeout(battle, 3000);
     mainMenu.style.display = 'none'
     character.style.transform = 'none'
-    attackAnimation.style.display = 'block'
     rightArrow.style.display = 'none'
     goblinKing.style.display = 'none'
 } 
+
 const monsterRenderer = () => {
     if (enemy1Be === enemiesData[0].name) {
         enemy1.innerHTML += `<img src="${enemiesData[0].img}" alt="">`
@@ -547,14 +613,14 @@ const monsterRenderer = () => {
         enemiesDataContainer[0].innerHTML = enemiesData[2].name
         enemy1LP.innerHTML = `${enemy1Data[2].LP}/${enemiesData[2].LP}`
         battleExperience += enemiesData[2].exp
-        itemsChance += 5
+        itemsChance += 6
     } if (enemy2Be === enemiesData[2].name) {
         enemy2.innerHTML = `<img src="${enemiesData[2].img}" alt="">`
         enemy2Data[2].LP = enemiesData[2].LP
         enemiesDataContainer[1].innerHTML = enemiesData[2].name
         enemy2LP.innerHTML = `${enemy2Data[2].LP}/${enemiesData[2].LP}`
         battleExperience += enemiesData[2].exp
-        itemsChance += 5
+        itemsChance += 6
     } if (enemy1Be === enemiesData[3].name) {
         enemy1.innerHTML += `<img src="${enemiesData[3].img}" alt="">`
         enemy1Data[3].LP = enemiesData[3].LP
@@ -572,32 +638,71 @@ const monsterRenderer = () => {
     } if (enemy1Be === enemiesData[4].name) {
         enemy1.innerHTML += `<img src="${enemiesData[4].img}" alt="">`
         enemy1Data[4].LP = enemiesData[4].LP
-        enemiesDataContainer[4].innerHTML = enemiesData[4].name
+        enemiesDataContainer[0].innerHTML = enemiesData[4].name
         enemy1LP.innerHTML = `${enemy1Data[3].LP}/${enemiesData[4].LP}`
         battleExperience += enemiesData[4].exp
         itemsChance += 8
     } if (enemy2Be === enemiesData[4].name) {
         enemy2.innerHTML = `<img src="${enemiesData[4].img}" alt="">`
         enemy2Data[4].LP = enemiesData[4].LP
-        enemiesDataContainer[4].innerHTML = enemiesData[4].name
+        enemiesDataContainer[1].innerHTML = enemiesData[4].name
         enemy2LP.innerHTML = `${enemy2Data[4].LP}/${enemiesData[4].LP}`
         battleExperience += enemiesData[4].exp
         itemsChance += 8
     } if (enemy1Be === enemiesData[5].name) {
         enemy1.innerHTML += `<img src="${enemiesData[5].img}" alt="">`
         enemy1Data[5].LP = enemiesData[5].LP
-        enemiesDataContainer[5].innerHTML = enemiesData[5].name
+        enemiesDataContainer[0].innerHTML = enemiesData[5].name
         enemy1LP.innerHTML = `${enemy1Data[5].LP}/${enemiesData[5].LP}`
         battleExperience += enemiesData[5].exp
         itemsChance += 9
     } if (enemy2Be === enemiesData[5].name) {
         enemy2.innerHTML = `<img src="${enemiesData[5].img}" alt="">`
         enemy2Data[5].LP = enemiesData[5].LP
-        enemiesDataContainer[5].innerHTML = enemiesData[5].name
+        enemiesDataContainer[1].innerHTML = enemiesData[5].name
         enemy2LP.innerHTML = `${enemy2Data[5].LP}/${enemiesData[5].LP}`
         battleExperience += enemiesData[5].exp
         itemsChance += 9
-    }
+    } if (enemy1Be === enemiesData[6].name) {
+        enemy1.innerHTML += `<img src="${enemiesData[6].img}" alt="">`
+        enemy1Data[6].LP = enemiesData[6].LP
+        enemiesDataContainer[0].innerHTML = enemiesData[6].name
+        enemy1LP.innerHTML = `${enemy1Data[6].LP}/${enemiesData[6].LP}`
+        battleExperience += enemiesData[6].exp
+        itemsChance += 10
+    } if (enemy2Be === enemiesData[6].name) {
+        enemy2.innerHTML = `<img src="${enemiesData[6].img}" alt="">`
+        enemy2Data[6].LP = enemiesData[6].LP
+        enemiesDataContainer[1].innerHTML = enemiesData[6].name
+        enemy2LP.innerHTML = `${enemy2Data[6].LP}/${enemiesData[6].LP}`
+        battleExperience += enemiesData[6].exp
+        itemsChance += 10
+    } if (enemy1Be === enemiesData[7].name) {
+        enemy1.innerHTML += `<img src="${enemiesData[7].img}" alt="">`
+        enemy1Data[7].LP = enemiesData[7].LP
+        enemiesDataContainer[0].innerHTML = enemiesData[7].name
+        enemy1LP.innerHTML = `${enemy1Data[7].LP}/${enemiesData[7].LP}`
+        battleExperience += enemiesData[7].exp
+        itemsChance += 11
+    } if (enemy2Be === enemiesData[7].name) {
+        enemy2.innerHTML = `<img src="${enemiesData[7].img}" alt="">`
+        enemy2Data[7].LP = enemiesData[7].LP
+        enemiesDataContainer[1].innerHTML = enemiesData[7].name
+        enemy2LP.innerHTML = `${enemy2Data[7].LP}/${enemiesData[7].LP}`
+        battleExperience += enemiesData[7].exp
+        itemsChance += 11
+    } if (enemy1Be === enemiesData[8].name) {
+        enemy1.innerHTML += `<img src="${enemiesData[8].img}" alt="">`
+        boss.style.transform = 'scaleX(-1)'
+        boss.style.width = '250px'
+        boss.style.height = '250px'
+        enemy1Data[8].LP = enemiesData[8].LP
+        enemiesDataContainer[0].innerHTML = enemiesData[8].name
+        enemy1LP.innerHTML = `${enemy1Data[8].LP}/${enemiesData[8].LP}`
+        battleExperience += enemiesData[8].exp
+    }   
+    enemy1.style.display = 'block'
+    enemy2.style.display = 'block'
 }
 
 const battle = () => {
@@ -640,8 +745,10 @@ const showArtsIcons = (action) => {
 }
 
 actionMenuButtons[0].addEventListener('click', () => {
-    showAttackIcons('attack')
-    clicked = true
+    if (turnIndicator.innerHTML === 'Your turn') {
+        showAttackIcons('attack')
+        clicked = true
+    }
 })
 
 actionMenuButtons[1].addEventListener('click', () => {clicked = false})
@@ -859,7 +966,7 @@ enemy1.addEventListener('click', () => {
             if (currentAction === 'attack') {
                 damage = characterStats.ATT - enemiesData[5].DEF + randomDamage
                 if (damage < 0 ) { damage = 0}
-                enemy1LP.innerHTML = `${enemy1Data[5].LP -= damage}/${enemiesData[4].LP}`
+                enemy1LP.innerHTML = `${enemy1Data[5].LP -= damage}/${enemiesData[5].LP}`
             } else if (currentAction === 'art') {
                 characterAP.innerHTML = `AP: ${characterStats.AP -= 3}/${characterStats.maxAP}`
                 if (currentArt === 'Kik') {
@@ -872,11 +979,63 @@ enemy1.addEventListener('click', () => {
                     enemy1LP.innerHTML = `${enemy1Data[5].LP -= damage}/${enemiesData[5].LP}`        
                 };
             } action = false
+        } else if (enemy1Be === enemiesData[6].name) {
+            if (currentAction === 'attack') {
+                damage = characterStats.ATT - enemiesData[6].DEF + randomDamage
+                if (damage < 0 ) { damage = 0}
+                enemy1LP.innerHTML = `${enemy1Data[6].LP -= damage}/${enemiesData[6].LP}`
+            } else if (currentAction === 'art') {
+                characterAP.innerHTML = `AP: ${characterStats.AP -= 3}/${characterStats.maxAP}`
+                if (currentArt === 'Koi') {
+                    damage = characterStats.artATT * 2 + randomDamage - enemiesData[6].artDEF
+                    if (damage < 0 ) { damage = 0}
+                    enemy1LP.innerHTML = `${enemy1Data[6].LP -= damage}/${enemiesData[6].LP}`        
+                } else if (currentArt === 'Ken' || currentArt === 'Kik') {
+                    damage = characterStats.artATT - enemiesData[6].artDEF + randomDamage
+                    if (damage < 0 ) { damage = 0}
+                    enemy1LP.innerHTML = `${enemy1Data[6].LP -= damage}/${enemiesData[6].LP}`        
+                };
+            } action = false
+        } else if (enemy1Be === enemiesData[7].name) {
+            if (currentAction === 'attack') {
+                damage = characterStats.ATT - enemiesData[7].DEF + randomDamage
+                if (damage < 0 ) { damage = 0}
+                enemy1LP.innerHTML = `${enemy1Data[7].LP -= damage}/${enemiesData[7].LP}`
+            } else if (currentAction === 'art') {
+                characterAP.innerHTML = `AP: ${characterStats.AP -= 3}/${characterStats.maxAP}`
+                if (currentArt === 'Koi') {
+                    damage = characterStats.artATT * 2 + randomDamage - enemiesData[7].artDEF
+                    if (damage < 0 ) { damage = 0}
+                    enemy1LP.innerHTML = `${enemy1Data[7].LP -= damage}/${enemiesData[7].LP}`        
+                } else if (currentArt === 'Kik' || currentArt === 'Ken') {
+                    damage = characterStats.artATT - enemiesData[7].artDEF + randomDamage
+                    if (damage < 0 ) { damage = 0}
+                    enemy1LP.innerHTML = `${enemy1Data[7].LP -= damage}/${enemiesData[7].LP}`        
+                };
+            } action = false
+        }  else if (enemy1Be === enemiesData[8].name) {
+            if (currentAction === 'attack') {
+                damage = characterStats.ATT - enemiesData[8].DEF + randomDamage
+                if (damage < 0 ) { damage = 0}
+                enemy1LP.innerHTML = `${enemy1Data[8].LP -= damage}/${enemiesData[8].LP}`
+            } else if (currentAction === 'art') {
+                characterAP.innerHTML = `AP: ${characterStats.AP -= 3}/${characterStats.maxAP}`
+                if (currentArt === 'Ken') {
+                    damage = characterStats.artATT * 2 + randomDamage - enemiesData[8].artDEF
+                    if (damage < 0 ) { damage = 0}
+                    enemy1LP.innerHTML = `${enemy1Data[8].LP -= damage}/${enemiesData[8].LP}`        
+                } else if (currentArt === 'Kik' || currentArt === 'Koi') {
+                    damage = characterStats.artATT - enemiesData[8].artDEF + randomDamage
+                    if (damage < 0 ) { damage = 0}
+                    enemy1LP.innerHTML = `${enemy1Data[8].LP -= damage}/${enemiesData[8].LP}`        
+                };
+            } action = false
         }
-
+        damageAnimation.style.display = 'block'
         damageAnimation.style.left = '400px'
         damageAnimation.style.bottom = '50px'
         damageAnimation.innerHTML = `<h2>-${damage}</h2>`
+        whichEnemy = 1
         turnIndicator.innerHTML = 'Enemy turn'
         KO()
         setTimeout(enemy1Turn, 3000);
@@ -997,11 +1156,46 @@ enemy2.addEventListener('click', () => {
                     enemy2LP.innerHTML = `${enemy2Data[5].LP -= damage}/${enemiesData[5].LP}`        
                 }
             } action = false
+        } else if (enemy2Be === enemiesData[6].name) {
+            if (currentAction === 'attack') {
+                damage = characterStats.ATT - enemiesData[6].DEF + randomDamage
+                if (damage < 0 ) { damage = 0}
+                enemy2LP.innerHTML = `${enemy2Data[6].LP -= damage}/${enemiesData[6].LP}`
+            } else if (currentAction === 'art') {
+                characterAP.innerHTML = `AP: ${characterStats.AP -= 3}/${characterStats.maxAP}`
+                if (currentArt === 'Koi') {
+                    damage = characterStats.artATT * 2 + randomDamage - enemiesData[6].artDEF
+                    if (damage < 0 ) { damage = 0}
+                    enemy2LP.innerHTML = `${enemy2Data[6].LP -= damage}/${enemiesData[6].LP}`        
+                } else if (currentArt === 'Kik' || currentArt === 'Ken') {
+                    damage = characterStats.artATT - enemiesData[6].artDEF + randomDamage
+                    if (damage < 0 ) { damage = 0}
+                    enemy2LP.innerHTML = `${enemy2Data[6].LP -= damage}/${enemiesData[6].LP}`        
+                }
+            } action = false
+        } else if (enemy2Be === enemiesData[7].name) {
+            if (currentAction === 'attack') {
+                damage = characterStats.ATT - enemiesData[7].DEF + randomDamage
+                if (damage < 0 ) { damage = 0}
+                enemy2LP.innerHTML = `${enemy2Data[7].LP -= damage}/${enemiesData[7].LP}`
+            } else if (currentAction === 'art') {
+                characterAP.innerHTML = `AP: ${characterStats.AP -= 3}/${characterStats.maxAP}`
+                if (currentArt === 'Ken') {
+                    damage = characterStats.artATT * 2 + randomDamage - enemiesData[7].artDEF
+                    if (damage < 0 ) { damage = 0}
+                    enemy2LP.innerHTML = `${enemy2Data[7].LP -= damage}/${enemiesData[7].LP}`        
+                } else if (currentArt === 'Koi' || currentArt === 'Kik') {
+                    damage = characterStats.artATT - enemiesData[7].artDEF + randomDamage
+                    if (damage < 0 ) { damage = 0}
+                    enemy2LP.innerHTML = `${enemy2Data[7].LP -= damage}/${enemiesData[7].LP}`        
+                }
+            } action = false
         }
-
+        damageAnimation.style.display = 'block'
         damageAnimation.style.left = '200px'
         damageAnimation.style.bottom = '100px'
         damageAnimation.innerHTML = `<h2>-${damage}</h2>`
+        whichEnemy = 1
         turnIndicator.innerHTML = 'Enemy turn'
         setTimeout(enemy1Turn, 3000);
         currentAction = 'enemyTurn'
@@ -1014,128 +1208,130 @@ enemy2.addEventListener('click', () => {
     }
 })
 
-const enemy1Turn = () => {
-    if (enemy1Be !== '') {
+const enemy1Turn = (enemy) => {
+    if (enemy1Be !== '' || whichEnemy === 2) {
         let damage;
         let randomDamage = Math.floor(Math.random() * 5)
         damageAnimation.style.left = '0'
         damageAnimation.style.bottom = '0'
 
-        if(enemy1Be === enemiesData[0].name) {
+        if((enemy1Be === enemiesData[0].name && whichEnemy === 1) || enemy === 0) {
             damage = enemiesData[0].ATT - characterStats.DEF + randomDamage
             if (damage < 0 ) { damage = 0}
             damageAnimation.innerHTML = `<h2>-${damage}</h2>`
             characterLP.innerHTML = `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
             attackAnimation.innerHTML = bloodyAttack
             animation()
-        } else if(enemy1Be === enemiesData[1].name) {
+        } else if((enemy1Be === enemiesData[1].name && whichEnemy === 1) || enemy === 1) {
             damage = enemiesData[1].ATT - characterStats.DEF + randomDamage
             if (damage < 0 ) { damage = 0}
             damageAnimation.innerHTML = `<h2>-${damage}</h2>`
             characterLP.innerHTML = `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
             attackAnimation.innerHTML = plantVenom
             animation()
-        } else if(enemy1Be === enemiesData[2].name) {
+        } else if((enemy1Be === enemiesData[2].name && whichEnemy === 1) || enemy === 2) {
             damage = enemiesData[2].artATT - characterStats.artDEF + randomDamage
             if (damage < 0 ) { damage = 0}
             damageAnimation.innerHTML = `<h2>-${damage}</h2>`
             characterLP.innerHTML = `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
             attackAnimation.innerHTML = sonicAttack
             animation()
-        } else if(enemy1Be === enemiesData[3].name) {
+        } else if((enemy1Be === enemiesData[3].name && whichEnemy === 1) || enemy === 3) {
             if (randomDamage < 3) {
                 damage = enemiesData[3].ATT - characterStats.DEF + randomDamage
                 if (damage < 0 ) { damage = 0}
                 attackAnimation.innerHTML = crushAttack
                 animation()
             } else {
-                damage = enemiesData[2].artATT - characterStats.artDEF + randomDamage
+                damage = enemiesData[3].artATT - characterStats.artDEF + randomDamage
                 if (damage < 0 ) { damage = 0}
                 attackAnimation.innerHTML = negativeAura
                 animation()
             }
             damageAnimation.innerHTML = `<h2>-${damage}</h2>`
             characterLP.innerHTML = `LP ${characterStats.LP -= damage}/${characterStats.maxLP}`
-        } else if(enemy1Be === enemiesData[4].name) {
+        } else if((enemy1Be === enemiesData[4].name && whichEnemy === 1) || enemy === 4) {
             damage = enemiesData[4].ATT - characterStats.DEF + randomDamage
             if (damage < 0 ) { damage = 0}
             damageAnimation.innerHTML = `<h2>-${damage}</h2>`
             characterLP.innerHTML = `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
-            attackAnimation.innerHTML = sonicAttack
+            attackAnimation.innerHTML = energicBomb
             animation()
-        } else if(enemy1Be === enemiesData[5].name) {
+        } else if((enemy1Be === enemiesData[5].name && whichEnemy === 1) || enemy === 5) {
             damage = enemiesData[5].ATT - characterStats.DEF + randomDamage
             if (damage < 0 ) { damage = 0}
             damageAnimation.innerHTML = `<h2>-${damage}</h2>`
             characterLP.innerHTML = `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
-            attackAnimation.innerHTML = sonicAttack
+            attackAnimation.innerHTML = crushAttack
             animation()
+        } else if((enemy1Be === enemiesData[6].name && whichEnemy === 1) || enemy === 6) {
+            damage = enemiesData[6].artATT - characterStats.artDEF + randomDamage
+            if (damage < 0 ) { damage = 0}
+            damageAnimation.innerHTML = `<h2>-${damage}</h2>`
+            characterLP.innerHTML = `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
+            attackAnimation.innerHTML = fire
+            animation()
+        } else if((enemy1Be === enemiesData[7].name && whichEnemy === 1) || enemy === 7) {
+            if (randomDamage < 3) {
+                damage = enemiesData[7].ATT - characterStats.DEF + randomDamage
+                if (damage < 0 ) { damage = 0}
+                attackAnimation.innerHTML = confusion
+                animation()
+            } else {
+                damage = enemiesData[7].artATT - characterStats.artDEF + randomDamage
+                if (damage < 0 ) { damage = 0}
+                attackAnimation.innerHTML = bomb
+                animation()
+            }
+            damageAnimation.innerHTML = `<h2>-${damage}</h2>`
+            characterLP.innerHTML = `LP ${characterStats.LP -= damage}/${characterStats.maxLP}`
+        }  else if(enemy1Be === enemiesData[8].name) {
+            if (randomDamage < 3) {
+                damage = enemiesData[8].ATT - characterStats.DEF + randomDamage
+                if (damage < 0 ) { damage = 0}
+                attackAnimation.innerHTML = confusion
+                animation()
+            } else if (randomDamage < 5){
+                damage = enemiesData[8].artATT - characterStats.artDEF + randomDamage
+                if (damage < 0 ) { damage = 0}
+                attackAnimation.innerHTML = electroShock
+                animation()
+            } else if (randomDamage = 5){
+                damage = enemiesData[8].artATT - characterStats.artDEF + randomDamage * 1.5
+                if (damage < 0 ) { damage = 0}
+                attackAnimation.innerHTML = blueFlames
+                animation()
+            }
+            damageAnimation.innerHTML = `<h2>-${damage}</h2>`
+            characterLP.innerHTML = `LP ${characterStats.LP -= damage}/${characterStats.maxLP}`
         }
         
         messageField.style.display = 'none'
-        setTimeout(enemy2Turn, 3000);
+            setTimeout(enemy2Turn, 3000,);
     } else {
         enemy2Turn()
     }
 }
 
 const enemy2Turn = () => {
-    if (enemy2Be !== '') {
-        let damage;
-        let randomDamage = Math.floor(Math.random() * 5)
-        damageAnimation.style.left = '0'
-        damageAnimation.style.bottom = '0'
-        messageField.style.display = 'none'
-
+    if (whichEnemy === 1 && enemy2Be !== '') {
+        whichEnemy = 2
         if(enemy2Be === enemiesData[0].name) {
-            damage = enemiesData[0].ATT - characterStats.DEF + randomDamage
-            if (damage < 0 ) { damage = 0}
-            damageAnimation.innerHTML = `<h2>-${damage}</h2>`
-            characterLP.innerHTML =  `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
-            attackAnimation.innerHTML = bloodyAttack
-            animation()
+            enemy1Turn(0)
         } else if(enemy2Be === enemiesData[1].name) {
-            damage = enemiesData[1].ATT - characterStats.DEF + randomDamage
-            if (damage < 0 ) { damage = 0}
-            damageAnimation.innerHTML = `<h2>-${damage}</h2>`
-            characterLP.innerHTML =  `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
-            attackAnimation.innerHTML = plantVenom
-            animation()
+            enemy1Turn(1)
         } else if(enemy2Be === enemiesData[2].name) {
-            damage = enemiesData[2].artATT - characterStats.artDEF + randomDamage
-            if (damage < 0 ) { damage = 0}
-            damageAnimation.innerHTML = `<h2>-${damage}</h2>`
-            characterLP.innerHTML =  `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
-            attackAnimation.innerHTML = sonicAttack
-            animation()
+            enemy1Turn(2)
         } else if(enemy2Be === enemiesData[3].name) {
-            if (randomDamage < 3) {
-                damage = enemiesData[3].ATT - characterStats.DEF + randomDamage
-                if (damage < 0 ) { damage = 0}
-                attackAnimation.innerHTML = crushAttack
-                animation()
-            } else {
-                damage = enemiesData[2].artATT - characterStats.artDEF + randomDamage
-                if (damage < 0 ) { damage = 0}
-                attackAnimation.innerHTML = negativeAura
-                animation()
-            }
-            damageAnimation.innerHTML = `<h2>-${damage}</h2>`
-            characterLP.innerHTML = `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
+            enemy1Turn(3)
         } else if(enemy2Be === enemiesData[4].name) {
-            damage = enemiesData[4].ATT - characterStats.DEF + randomDamage
-            if (damage < 0 ) { damage = 0}
-            damageAnimation.innerHTML = `<h2>-${damage}</h2>`
-            characterLP.innerHTML =  `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
-            attackAnimation.innerHTML = plantVenom
-            animation()
+            enemy1Turn(4)
         } else if(enemy2Be === enemiesData[5].name) {
-            damage = enemiesData[5].ATT - characterStats.DEF + randomDamage
-            if (damage < 0 ) { damage = 0}
-            damageAnimation.innerHTML = `<h2>-${damage}</h2>`
-            characterLP.innerHTML =  `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
-            attackAnimation.innerHTML = plantVenom
-            animation()
+            enemy1Turn(5)
+        } else if(enemy2Be === enemiesData[6].name) {
+            enemy1Turn(6)
+        } else if(enemy2Be === enemiesData[7].name) {
+            enemy1Turn(7)
         }
     } turnIndicator.innerHTML = 'Your turn'
 }
@@ -1210,6 +1406,20 @@ const gainItems = () => {
         if (itemsChance <= 18 && random >= 3) {
             ownEq.push('Silver Elmet')
             battleEq = 'Silver Elmet'
+    }} else if (itemsChance <= 20 && random > 1) {
+        itemsBag[0].quantity ++
+        itemsBag[1].quantity ++
+        battleItems = 'LP potion && AP potion'
+        if (itemsChance <= 20 && random >= 3) {
+            ownEq.push('Regal Elmet')
+            battleEq = 'Regal Elmet'
+    }} else if (itemsChance <= 22 && random > 1) {
+        itemsBag[0].quantity ++
+        itemsBag[1].quantity ++
+        battleItems = 'LP potion && AP potion'
+        if (itemsChance <= 22 && random >= 3) {
+            ownEq.push('Regal Armor')
+            battleEq = 'Regal Armor'
     }}
     
     itemRenderer()
@@ -1246,6 +1456,8 @@ const itemAction = () => {
         turnIndicator.innerHTML = 'Enemy turn'
         actionMenu.style.display = 'block'
         itemsMenu.style.display = 'none'
+        damageAnimation.style.display = 'block'
+        whichEnemy = 1
         itemRenderer()    
     } else if (currentItem.includes('AP potion')) {
         characterStats.AP = characterStats.maxAP
@@ -1256,6 +1468,8 @@ const itemAction = () => {
         turnIndicator.innerHTML = 'Enemy turn'
         actionMenu.style.display = 'block'
         itemsMenu.style.display = 'none'
+        damageAnimation.style.display = 'block'
+        whichEnemy = 1
         itemRenderer()    
     }
 }
@@ -1263,29 +1477,39 @@ const itemAction = () => {
 
 const checkWin = () => {
     if (enemy1Be === '' && enemy2Be === '') {
-        field.style.backgroundImage = "url('./img/depositphotos_213264340-stock-illustration-frame-with-celtic-ornament.jpg')"
+        field.style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))  ,url('./img/afterBattle.jpg')`
         winMessage.style.display = 'block'
-        winMessage.innerHTML = `You Won <br> gained experience ${battleExperience} <br> Gained items: ${battleItems} <br> Gained equip: ${battleEq}` 
+        winMessage.innerHTML = `You Won <br> gained experience: ${battleExperience} <br> Gained items: ${battleItems} <br> Gained equip: ${battleEq}` 
         battleSection.style.display = 'none'
         continuee.style.display = 'block'
         battleExperience = 0
         battleItems = ''
         attackAnimation.style.display = 'none'
+        damageAnimation.style.display = 'none'
     } else {
-        field.style.backgroundImage = "url('./img/depositphotos_213264340-stock-illustration-frame-with-celtic-ornament.jpg')"
+        field.style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))  ,url('./img/afterBattle.jpg')`
         winMessage.style.display = 'block'
         winMessage.innerHTML = `You were able to escaped, <br> but you gained nothing` 
         battleSection.style.display = 'none'
         continuee.style.display = 'block'
         battleExperience = 0
         attackAnimation.style.display = 'none'
+        damageAnimation.style.display = 'none'
     }
 }
 
 continuee.onclick = () => {
-    field.style.backgroundImage = 'url("https://cdna.artstation.com/p/assets/images/images/000/199/218/large/magdalena-mudlaff-matte-painting-environment-fantasy-forest-concept.jpg?1410275846")'
+    if (scenario === 1) {
+        field.style.backgroundImage = "url('./img/darkForestEntrance.jpg')"
+        rightArrow.style.display = 'block'
+    } else {
+        field.style.backgroundImage = "url('./img/goblinForest.jpg')"
+        goblinKing.style.display = 'block'
+    }
     continuee.style.display = 'none'
     winMessage.style.display = 'none'
+    enemy1.style.display = 'none'
+    enemy2.style.display = 'none'
     movement = true
     mainMenu.style.display = 'block'
     if (enemySpots === 1) {
@@ -1300,9 +1524,19 @@ continuee.onclick = () => {
         character.style.left = '500px'
     } else if (enemySpots === 6) {
         character.style.left = '600px'
+    } else if (enemySpots === 7) {
+        character.style.left = '140px'
+    } else if (enemySpots === 8) {
+        character.style.left = '260px'
+    }else if (enemySpots === 9) {
+        character.style.left = '350px'
+    } else if (enemySpots === 10) {
+        character.style.left = '400px'
+    } else if (enemySpots === 11) {
+        character.style.left = '520px'
+    } else if (enemySpots === 12) {
+        character.style.left = '600px'
+    } else if (enemySpots === 13) {
+        character.style.left = '680px'
     }
 }
-
-
-
-

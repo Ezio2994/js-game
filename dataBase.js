@@ -33,7 +33,7 @@ const enemiesData = [
         DEF: 10,
         artATT: 10,
         artDEF: 12,
-        exp: 10,
+        exp: 7,
         Weakness: 'Kik'
     },
     {
@@ -86,6 +86,45 @@ const enemiesData = [
         artATT: 0,
         artDEF: 10,
         exp: 15,
+        Weakness: 'Kik'
+    },
+    {
+        img: "./img/goblinMage.gif",
+        name: 'Goblin Mage',
+        maxLP: 35,
+        LP: 35,
+        MP: 20,
+        ATT: 8,
+        DEF: 15,
+        artATT: 20,
+        artDEF: 20,
+        exp: 18,
+        Weakness: 'Koi'
+    },
+    {
+        img: "./img/assassinGoblin.gif",
+        name: 'Assassin Goblin',
+        maxLP: 60,
+        LP: 60,
+        MP: 15,
+        ATT: 30,
+        DEF: 25,
+        artATT: 20,
+        artDEF: 15,
+        exp: 20,
+        Weakness: 'Ken'
+    },
+    {
+        img: "./img/goblinKing.gif",
+        name: 'Goblin King',
+        maxLP: 100,
+        LP: 100,
+        MP: 25,
+        ATT: 40,
+        DEF: 35,
+        artATT: 30,
+        artDEF: 25,
+        exp: 100,
         Weakness: 'Kik'
     },
 ]

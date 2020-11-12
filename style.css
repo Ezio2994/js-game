@@ -61,6 +61,16 @@ main img {
   left: 0;
 }
 
+main #mute {
+  position: absolute;
+  right: 0;
+  top: -10px;
+  background-color: transparent;
+  color: orange;
+  border: none;
+  font-size: 32px;
+}
+
 main #right {
   left: unset;
   right: -50px;
@@ -103,7 +113,6 @@ main #startGame span {
 main #startGame button {
   margin-top: 10px;
   border-radius: 25px;
-  background-color: transparent;
   padding: 5px;
   color: brown;
   border: brown 2px solid;
@@ -130,6 +139,20 @@ main article {
   font-size: 42px;
   font-weight: bold;
   display: block;
+}
+
+main #message {
+  position: unset;
+  color: orange;
+}
+
+main #continue {
+  border-radius: 25px;
+  padding: 5px;
+  color: brown;
+  border: brown 2px solid;
+  background-color: greenyellow;
+  height: unset;
 }
 
 main #mainMenu {
@@ -449,6 +472,7 @@ main #enemy1 {
   cursor: pointer;
   left: 400px;
   bottom: 0;
+  display: none;
 }
 
 main #enemy1 img {
@@ -466,6 +490,7 @@ main #damageAnimation {
   position: absolute;
   left: 400px;
   bottom: 0;
+  display: none;
 }
 
 main .attackAnimation {
@@ -474,6 +499,7 @@ main .attackAnimation {
   position: absolute;
   left: 400px;
   bottom: 0;
+  display: none;
 }
 
 main .attackAnimation img {
@@ -486,6 +512,7 @@ main #enemy2 {
   cursor: pointer;
   left: 200px;
   bottom: 100px;
+  display: none;
 }
 
 main #enemy2 img {
@@ -531,5 +558,52 @@ main #continue {
   bottom: 50px;
   left: 40%;
   font-size: 24px;
+}
+
+.slide-in-blurred-tr {
+  -webkit-animation: slide-in-blurred-tr 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation: slide-in-blurred-tr 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@-webkit-keyframes slide-in-blurred-tr {
+  0% {
+    -webkit-transform: translate(1000px, -1000px) skew(-80deg, -10deg);
+    transform: translate(1000px, -1000px) skew(-80deg, -10deg);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate(0, 0) skew(0deg, 0deg);
+    transform: translate(0, 0) skew(0deg, 0deg);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-blurred-tr {
+  0% {
+    -webkit-transform: translate(1000px, -1000px) skew(-80deg, -10deg);
+    transform: translate(1000px, -1000px) skew(-80deg, -10deg);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate(0, 0) skew(0deg, 0deg);
+    transform: translate(0, 0) skew(0deg, 0deg);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=style.css.map */

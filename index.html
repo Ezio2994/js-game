@@ -9,6 +9,7 @@
     <title>Initial Fantasy</title>
 <body>
     <main>
+        <button id="mute"><i class="fas fa-volume-up"></i></button>
         <div id="startGame">
             <p>Hello adventurous, I'm glad to see you came to help our hero to defeat <br> the goblin king who invaded this forest. <br> The path is full of powerfull enemies so be caferull on going ahead to quickly <br> since enemies get stronger and stronger as you move forward. <br> Sometimes may help go back and get stronger by defeating weaker enemies. <br> This is a rpg turn based, this means you can fight by declaring one action per turn. <br>
             You will be able to acces the following tutorial everytime you need from the menu.
@@ -68,7 +69,7 @@
                 <button>Silver Boots<span>ATT +4 <br> DEF +4</span></button>
                 <button>Regal Boots<span>ATT +3 <br> LP +20</span></button>
                 <button id="equipmentBack" value="back"><i class="fas fa-long-arrow-alt-left"></i></button>
-            </div>
+            </div> 
             <div id="showEq">
                 <div>
                     <h4>Head</h4>
@@ -144,13 +145,14 @@
             </section>
             <h2>Your turn</h2>
         </section>
-        <div id="enemy1"></div>
-        <div id="enemy2"></div>
+        <div id="enemy1" class="slide-in-blurred-tr"></div>
+        <div id="enemy2" class="slide-in-blurred-tr"></div>
         <div id="damageAnimation"></div>
         <div class="attackAnimation"></div>
         <button id="continue">Continue</button>
 
     </main>
+    <audio autoplay loop src="./musicbackground (2).mp4"></audio>
     <script type="module" src="./script.js"></script>
 </body>
 </html>
