@@ -14,6 +14,7 @@ const battleSection = document.querySelector('section')
 const turnIndicator = document.querySelector('section h2')
 const character = document.querySelector('#characterPG')
 const messageField = document.querySelector('#messageField')
+const restart = document.querySelector('#restart')
 const winMessage = document.querySelector('#message')
 const actionMenu = document.querySelector('.buttons')
 const actionMenuIcons = document.querySelectorAll('.buttons img')
@@ -71,7 +72,6 @@ const electroShock = `<img src="./img/electroShock.gif">`
 const energicBomb = `<img src="./img/energicBomb.gif">`
 const fire = `<img src="./img/fire.gif">`
 
-
 let page = 0;
 let x = 0;
 let y = 0;
@@ -97,10 +97,10 @@ const characterStats = {
     LP: 32,
     maxAP: 12,
     AP: 12,
-    ATT: 120,
+    ATT: 12,
     DEF: 8,
     artATT: 10,
-    artDEF: 8
+    artDEF: 80
 }
 
 mute.onclick = () => {
@@ -128,16 +128,10 @@ startGameButton.onclick = () => {
 }
 
 mainMenu.onclick = () => {
-    if (menu.style.display === 'none' && train.style.display === 'none' && useItems.style.display === 'none' && equipmentMenu.style.display === 'none') {
+    // if (menu.style.display === 'none' && train.style.display === 'none' && useItems.style.display === 'none' && equipmentMenu.style.display === 'none') {
         menu.style.display = 'block'
+        mainMenu.style.display = 'none'
         movement = false
-    } else {
-        menu.style.display = 'none'
-        train.style.display = 'none'
-        useItems.style.display = 'none'
-        equipmentMenu.style.display = 'none'
-        movement = true
-    }
 }
 
 menuButton.forEach(button => {
@@ -159,6 +153,13 @@ menuButton.forEach(button => {
             page = 0
             startGameText.innerHTML = `Hello adventurous, I'm glad to see you came to help our hero to defeat <br> the goblin king who invaded this forest. <br> The path is full of powerfull enemies so be caferull on going ahead to quickly <br> since enemies get stronger and stronger as you move forward. <br> Sometimes may help go back and get stronger by defeating weaker enemies. <br> This is a rpg turn based, this means you can fight by declaring one action per turn. <br>
             You will be able to acces the following tutorial everytime you need from the menu.`
+        } else if (menuButton[4]) {
+            menu.style.display = 'none'
+            train.style.display = 'none'
+            useItems.style.display = 'none'
+            equipmentMenu.style.display = 'none'
+            mainMenu.style.display = 'inline-block'
+            movement = true    
         }
     }
 })
@@ -449,7 +450,7 @@ const enemy = () => {
         enemySpots = 2;
         prepareBattle()
     } else if (character.style.left == '200px' && random < 3 && scenario === 1) {
-        if (random < 3) {
+        if (random < 2) {
             enemy1Be = enemiesData[2].name
         } else {
             enemy1Be = enemiesData[1].name
@@ -458,10 +459,10 @@ const enemy = () => {
         enemySpots = 3;
         prepareBattle()
     } else if (character.style.left == '350px' && random < 3 && scenario === 1) {
-        if (random < 3) {
-            enemy1Be = enemiesData[0].name
-        } else {
+        if (random < 2) {
             enemy1Be = enemiesData[2].name
+        } else {
+            enemy1Be = enemiesData[1].name
         }
         enemy2Be = enemiesData[2].name
         enemySpots = 4;
@@ -474,7 +475,7 @@ const enemy = () => {
         } if (random < 2) {
             enemy2Be = enemiesData[3].name
         } else {
-            enemy2Be = enemiesData[1].name
+            enemy2Be = enemiesData[2].name
         }
         enemySpots = 5;
         prepareBattle()
@@ -569,18 +570,19 @@ const enemy = () => {
 
 const prepareBattle = () => {
     movement = false
-    messageField.style.display = 'block'
-    setTimeout(monsterRenderer, 4000);
+    messageField.style.display = 'inline-block'
+    setTimeout(monsterRenderer, 3000);
     setTimeout(battle, 3000);
     mainMenu.style.display = 'none'
     character.style.transform = 'none'
     rightArrow.style.display = 'none'
     goblinKing.style.display = 'none'
+    turnIndicator.innerHTML = 'Your turn'
 } 
 
 const monsterRenderer = () => {
     if (enemy1Be === enemiesData[0].name) {
-        enemy1.innerHTML += `<img src="${enemiesData[0].img}" alt="">`
+        enemy1.innerHTML = `<img src="${enemiesData[0].img}" alt="">`
         enemy1Data[0].LP = enemiesData[0].LP
         enemiesDataContainer[0].innerHTML = enemiesData[0].name
         enemy1LP.innerHTML = `${enemy1Data[0].LP}/${enemiesData[0].LP}`
@@ -594,7 +596,7 @@ const monsterRenderer = () => {
         battleExperience += enemiesData[0].exp
         itemsChance += 2
     } if (enemy1Be === enemiesData[1].name) {
-        enemy1.innerHTML += `<img src="${enemiesData[1].img}" alt="">`
+        enemy1.innerHTML = `<img src="${enemiesData[1].img}" alt="">`
         enemy1Data[1].LP = enemiesData[1].LP
         enemiesDataContainer[0].innerHTML = enemiesData[1].name
         enemy1LP.innerHTML = `${enemy1Data[1].LP}/${enemiesData[1].LP}`
@@ -608,7 +610,7 @@ const monsterRenderer = () => {
         battleExperience += enemiesData[1].exp
         itemsChance += 4
     } if (enemy1Be === enemiesData[2].name) {
-        enemy1.innerHTML += `<img src="${enemiesData[2].img}" alt="">`
+        enemy1.innerHTML = `<img src="${enemiesData[2].img}" alt="">`
         enemy1Data[2].LP = enemiesData[2].LP
         enemiesDataContainer[0].innerHTML = enemiesData[2].name
         enemy1LP.innerHTML = `${enemy1Data[2].LP}/${enemiesData[2].LP}`
@@ -622,7 +624,7 @@ const monsterRenderer = () => {
         battleExperience += enemiesData[2].exp
         itemsChance += 6
     } if (enemy1Be === enemiesData[3].name) {
-        enemy1.innerHTML += `<img src="${enemiesData[3].img}" alt="">`
+        enemy1.innerHTML = `<img src="${enemiesData[3].img}" alt="">`
         enemy1Data[3].LP = enemiesData[3].LP
         enemiesDataContainer[0].innerHTML = enemiesData[3].name
         enemy1LP.innerHTML = `${enemy1Data[3].LP}/${enemiesData[3].LP}`
@@ -636,10 +638,10 @@ const monsterRenderer = () => {
         battleExperience += enemiesData[3].exp
         itemsChance += 7
     } if (enemy1Be === enemiesData[4].name) {
-        enemy1.innerHTML += `<img src="${enemiesData[4].img}" alt="">`
+        enemy1.innerHTML = `<img src="${enemiesData[4].img}" alt="">`
         enemy1Data[4].LP = enemiesData[4].LP
         enemiesDataContainer[0].innerHTML = enemiesData[4].name
-        enemy1LP.innerHTML = `${enemy1Data[3].LP}/${enemiesData[4].LP}`
+        enemy1LP.innerHTML = `${enemy1Data[4].LP}/${enemiesData[4].LP}`
         battleExperience += enemiesData[4].exp
         itemsChance += 8
     } if (enemy2Be === enemiesData[4].name) {
@@ -650,7 +652,7 @@ const monsterRenderer = () => {
         battleExperience += enemiesData[4].exp
         itemsChance += 8
     } if (enemy1Be === enemiesData[5].name) {
-        enemy1.innerHTML += `<img src="${enemiesData[5].img}" alt="">`
+        enemy1.innerHTML = `<img src="${enemiesData[5].img}" alt="">`
         enemy1Data[5].LP = enemiesData[5].LP
         enemiesDataContainer[0].innerHTML = enemiesData[5].name
         enemy1LP.innerHTML = `${enemy1Data[5].LP}/${enemiesData[5].LP}`
@@ -664,7 +666,7 @@ const monsterRenderer = () => {
         battleExperience += enemiesData[5].exp
         itemsChance += 9
     } if (enemy1Be === enemiesData[6].name) {
-        enemy1.innerHTML += `<img src="${enemiesData[6].img}" alt="">`
+        enemy1.innerHTML = `<img src="${enemiesData[6].img}" alt="">`
         enemy1Data[6].LP = enemiesData[6].LP
         enemiesDataContainer[0].innerHTML = enemiesData[6].name
         enemy1LP.innerHTML = `${enemy1Data[6].LP}/${enemiesData[6].LP}`
@@ -678,7 +680,7 @@ const monsterRenderer = () => {
         battleExperience += enemiesData[6].exp
         itemsChance += 10
     } if (enemy1Be === enemiesData[7].name) {
-        enemy1.innerHTML += `<img src="${enemiesData[7].img}" alt="">`
+        enemy1.innerHTML = `<img src="${enemiesData[7].img}" alt="">`
         enemy1Data[7].LP = enemiesData[7].LP
         enemiesDataContainer[0].innerHTML = enemiesData[7].name
         enemy1LP.innerHTML = `${enemy1Data[7].LP}/${enemiesData[7].LP}`
@@ -692,24 +694,26 @@ const monsterRenderer = () => {
         battleExperience += enemiesData[7].exp
         itemsChance += 11
     } if (enemy1Be === enemiesData[8].name) {
-        enemy1.innerHTML += `<img src="${enemiesData[8].img}" alt="">`
-        boss.style.transform = 'scaleX(-1)'
-        boss.style.width = '250px'
-        boss.style.height = '250px'
+        enemy1.style.backgroundImage = 'url("./img/goblinKing.gif")'
         enemy1Data[8].LP = enemiesData[8].LP
         enemiesDataContainer[0].innerHTML = enemiesData[8].name
         enemy1LP.innerHTML = `${enemy1Data[8].LP}/${enemiesData[8].LP}`
         battleExperience += enemiesData[8].exp
-    }   
+    }
     enemy1.style.display = 'block'
     enemy2.style.display = 'block'
 }
 
 const battle = () => {
+    if (scenario === 1) {
+        field.style.backgroundImage = 'url("./img/redForestBattle.jpg")'
+    } else {
+        field.style.backgroundImage = 'url("./img/darkForestBattle.jpg")'
+    }
     messageField.style.display = 'none'
-    field.style.backgroundImage = 'url("https://i.ytimg.com/vi/Iby6J0o3mKs/maxresdefault.jpg")'
     battleSection.style.display = 'flex'
     character.style.left = '20px'
+    messageField.innerHTML = "You failed <br> to escape"
 }
 
 const showAttackIcons = (action) => {
@@ -788,17 +792,20 @@ items.addEventListener('click', () => {
 
 flee.addEventListener('click', () => {
     if (turnIndicator.innerHTML === 'Your turn') {
-        let random = Math.floor(Math.random() * 3) + 1
-        if (random < 2) {
+        let random = Math.floor(Math.random() * 4) + 1
+        if (random <= 3) {
             enemy1.innerHTML = ''
             enemy2.innerHTML = ''
             checkWin()
         } else {
+            messageField.style.margin = '50px 260px'
+            messageField.innerHTML = "You failed <br> to escape"
             turnIndicator.innerHTML = 'Enemy turn'
             currentAction = 'enemyTurn'
+            whichEnemy = 1
+            damageAnimation.style.display = 'block'
             setTimeout(enemy1Turn, 3000);
-            messageField.style.display = 'block'
-            messageField.innerHTML = "You failed <br> to escape"
+            messageField.style.display = 'inline-block'
         }
     }
 })
@@ -851,6 +858,10 @@ const animation = whichEnemy => {
         } else {
             if (currentArt === 'Koi') {
                 attackAnimation.innerHTML = koi
+            } else if (currentArt === 'Ken') {
+                attackAnimation.innerHTML = ken
+            } else if (currentArt === 'Kik') {
+                attackAnimation.innerHTML = kik
             }
         }
     } else if (currentAction === 'enemyTurn') {
@@ -1249,7 +1260,7 @@ const enemy1Turn = (enemy) => {
                 animation()
             }
             damageAnimation.innerHTML = `<h2>-${damage}</h2>`
-            characterLP.innerHTML = `LP ${characterStats.LP -= damage}/${characterStats.maxLP}`
+            characterLP.innerHTML = `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
         } else if((enemy1Be === enemiesData[4].name && whichEnemy === 1) || enemy === 4) {
             damage = enemiesData[4].ATT - characterStats.DEF + randomDamage
             if (damage < 0 ) { damage = 0}
@@ -1284,7 +1295,7 @@ const enemy1Turn = (enemy) => {
                 animation()
             }
             damageAnimation.innerHTML = `<h2>-${damage}</h2>`
-            characterLP.innerHTML = `LP ${characterStats.LP -= damage}/${characterStats.maxLP}`
+            characterLP.innerHTML = `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
         }  else if(enemy1Be === enemiesData[8].name) {
             if (randomDamage < 3) {
                 damage = enemiesData[8].ATT - characterStats.DEF + randomDamage
@@ -1303,11 +1314,14 @@ const enemy1Turn = (enemy) => {
                 animation()
             }
             damageAnimation.innerHTML = `<h2>-${damage}</h2>`
-            characterLP.innerHTML = `LP ${characterStats.LP -= damage}/${characterStats.maxLP}`
+            characterLP.innerHTML = `LP: ${characterStats.LP -= damage}/${characterStats.maxLP}`
+        } if (whichEnemy === 2) {
+            setTimeout(timing, 3000)
         }
-        
+        console.log(characterLP.innerHTML);
         messageField.style.display = 'none'
-            setTimeout(enemy2Turn, 3000,);
+        gameOver()
+        setTimeout(enemy2Turn, 3000,);
     } else {
         enemy2Turn()
     }
@@ -1333,8 +1347,10 @@ const enemy2Turn = () => {
         } else if(enemy2Be === enemiesData[7].name) {
             enemy1Turn(7)
         }
-    } turnIndicator.innerHTML = 'Your turn'
+    } else {timing()}
 }
+
+const timing = () => {turnIndicator.innerHTML = 'Your turn'}
 
 const KO = () => {
     if ((enemy1LP.innerHTML.includes('-') || enemy1LP.innerHTML.charAt(0) === '0') && enemy1.innerHTML !== '') {
@@ -1347,9 +1363,87 @@ const KO = () => {
         enemy2Be = ''
         enemy2LP.innerHTML = ''
         enemiesDataContainer[1].innerHTML = ''
+    } else if ((enemy1LP.innerHTML.includes('-') || enemy1LP.innerHTML.charAt(0) === '0') && enemy1Be === enemiesData[8].name) {
+        enemy1Be = ''
+        checkWin()
     }
     setTimeout(expAndItems, 3000)
 }
+
+const gameOver = () => {
+    if (characterLP.innerHTML.includes('-') || characterLP.innerHTML.charAt(4) === '0') {
+        field.style.backgroundImage = `url('./img/gameOver.gif')`;
+        restart.style.display = 'block';
+        messageField.style.display = 'inline-block';
+        messageField.style.margin = '40px 350px';
+        messageField.style.backgroundColor = 'transparent';
+        messageField.innerHTML = 'Your LP reached 0';
+        character.style.display = 'none';
+        battleSection.style.display = 'none';
+        enemy1.style.display = 'none';
+        enemy2.style.display = 'none';
+        damageAnimation.style.display = 'none'
+        attackAnimation.style.display = 'none'
+        movement = false;  
+    }
+}
+
+restart.onclick = () => {
+    field.style.backgroundImage = "url('./img/darkForestEntrance.jpg')"
+    character.style.display = 'block'
+    restart.style.display = 'none'
+    startGame.style.display = 'block'
+    mainMenu.style.display = 'none'
+    menu.style.display = 'none'
+    page = 0
+    startGameText.innerHTML = `Hello adventurous, I'm glad to see you came to help our hero to defeat <br> the goblin king who invaded this forest. <br> The path is full of powerfull enemies so be caferull on going ahead to quickly <br> since enemies get stronger and stronger as you move forward. <br> Sometimes may help go back and get stronger by defeating weaker enemies. <br> This is a rpg turn based, this means you can fight by declaring one action per turn. <br>
+    You will be able to acces the following tutorial everytime you need from the menu.`
+    rightArrow.style.display = 'block'
+    messageField.style.display = 'none';
+    messageField.style.backgroundColor = 'red'
+    rightArrow.style.transform = 'none'
+    rightArrow.style.left = 'unset'
+    characterStats.maxLP = 32;
+    characterStats.LP = 32;
+    characterStats.maxAP = 12;
+    characterStats.AP = 12;
+    characterStats.ATT = 12;
+    characterStats.DEF = 8;
+    characterStats.artATT = 10;
+    characterStats.artDEF = 8;
+    characterLP.innerHTML = `LP: ${characterStats.LP}/${characterStats.maxLP}`
+    characterAP.innerHTML = `AP: ${characterStats.AP}/${characterStats.maxAP}`
+    winMessage.style.display = 'none'
+    x = 0;
+    y = 0;
+    scenario = 1;
+    character.style.left = 0;
+    currentAction = '';
+    currentArt = '';
+    action = false;
+    whichEnemy = 1 
+    battleExperience = 0;
+    totalExperience = 0;
+    itemsChance = 0;
+    battleEq = ''
+    currentItem;
+    ownEq = []; 
+    itemsBag[0].quantity = 0;
+    itemsBag[1].quantity = 0;
+    slot1.forEach(slot => slot.innerHTML = `empty`)
+    slot2.forEach(slot => slot.innerHTML = `empty`)
+    eqListButton.forEach(eq => eq.style.display = 'none')
+    eqImgs.forEach(eq => eq.style.display = 'none')    
+    eqListButton[8].style.display = 'block'
+    statsValue[0].innerText = characterStats.maxLP
+    statsValue[1].innerText = characterStats.maxAP
+    statsValue[2].innerText = characterStats.ATT
+    statsValue[3].innerText = characterStats.DEF
+    statsValue[4].innerText = characterStats.artATT
+    statsValue[5].innerText = characterStats.artDEF
+    totEXP.innerText = totalExperience
+}
+
 
 const expAndItems = () => {
     if (enemy1Be === '' && enemy2Be === '') {
@@ -1364,7 +1458,6 @@ const gainExperience = () => {
     totEXP.innerText = totalExperience
 }
 
-
 const gainItems = () => {
     let random = Math.floor(Math.random() * 5)
     console.log(random);
@@ -1375,53 +1468,68 @@ const gainItems = () => {
             itemsBag[1].quantity ++
             battleItems = 'LP potion && AP potion'
     }} else if (itemsChance < 9 && random > 1) {
-        itemsBag[0].quantity ++
-        battleItems = 'LP potion'
+        itemsBag[1].quantity ++
+        battleItems = 'AP potion'
         if (itemsChance < 9 && random >= 3) {
-            ownEq.push('Silver Armor')
-            battleItems = 'LP potion'
-            battleEq = 'Silver Armor'
+            if(!ownEq.includes('Silver Armor')) {
+                ownEq.push('Silver Armor')
+                battleEq = 'Silver Armor'
+            }
     }} else if (itemsChance < 11 && random > 1) {
         itemsBag[1].quantity += 2
         battleItems = '2 AP potion'
-        ownEq.push('Silver Boots')
-        battleEq = 'Silver Boots'
+        if(!ownEq.includes('Silver Boots')) {
+            ownEq.push('Silver Boots')
+            battleEq = 'Silver Boots'
+        }
         if (itemsChance < 11 && random >= 4) {
-            ownEq.push('Regal Boots')
-            battleEq = 'Regal Boots && Silver Boots'
+            if(!ownEq.includes('Regal Boots')) {
+                ownEq.push('Regal Boots')
+                battleEq = 'Regal Boots && Silver Boots'
+            }
     }} else if (itemsChance < 14 && random > 1) {
         itemsBag[0].quantity ++
-        itemsBag[0].quantity ++
+        itemsBag[1].quantity ++
         battleItems = 'AP potion && LP potion'
         if (itemsChance < 14 && random >= 4) {
-            ownEq.push('Magic Sword')
-            battleEq = 'Magic Sword'
+            if(!ownEq.includes('Magic Sword')) {   
+                ownEq.push('Magic Sword')
+                battleEq = 'Magic Sword'
+            }
     }} else if (itemsChance === 14) {
-        ownEq.push('Strong Sword')
-        battleEq = 'Strong Sword'
+        if(!ownEq.includes('Strong Sword')) {   
+            ownEq.push('Strong Sword')
+            battleEq = 'Strong Sword'
+        }
     } else if (itemsChance < 16 && random > 1) {
         itemsBag[0].quantity ++
         itemsBag[1].quantity ++
         battleItems = 'LP potion && AP potion'
         if (itemsChance <= 18 && random >= 3) {
-            ownEq.push('Silver Elmet')
-            battleEq = 'Silver Elmet'
+            if(!ownEq.includes('Silver Elmet')) {   
+                ownEq.push('Silver Elmet')
+                battleEq = 'Silver Elmet'
+            }
     }} else if (itemsChance <= 20 && random > 1) {
         itemsBag[0].quantity ++
         itemsBag[1].quantity ++
         battleItems = 'LP potion && AP potion'
         if (itemsChance <= 20 && random >= 3) {
-            ownEq.push('Regal Elmet')
-            battleEq = 'Regal Elmet'
+            if(!ownEq.includes('Regal Elmet')) {   
+                ownEq.push('Regal Elmet')
+                battleEq = 'Regal Elmet'
+            }
     }} else if (itemsChance <= 22 && random > 1) {
         itemsBag[0].quantity ++
         itemsBag[1].quantity ++
         battleItems = 'LP potion && AP potion'
         if (itemsChance <= 22 && random >= 3) {
-            ownEq.push('Regal Armor')
-            battleEq = 'Regal Armor'
-    }}
-    
+            if(!ownEq.includes('Regal Armor')) {   
+                ownEq.push('Regal Armor')
+                battleEq = 'Regal Armor'
+            }
+        }
+    }
     itemRenderer()
     getEq()
     itemsChance = 0;
@@ -1476,7 +1584,18 @@ const itemAction = () => {
 
 
 const checkWin = () => {
-    if (enemy1Be === '' && enemy2Be === '') {
+    if (enemy1Be === '' && enemySpots === 13) {
+        enemy1.style.display = 'none'
+        winMessage.style.display = 'block'
+        winMessage.innerHTML = `Congrats, you made it! <br> You defeated the Goglin King <br> You should feel very proud of yourself <br> that wasnt't easy`
+        restart.style.display = 'block'
+        enemy1.style.backgroundImage = 'unset'
+        field.style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))  ,url('./img/afterBattle.jpg')`
+        restart.style.display = 'block'
+        battleSection.style.display = 'none'
+        attackAnimation.style.display = 'none'
+        damageAnimation.style.display = 'none'
+    } else if (enemy1Be === '' && enemy2Be === '') {
         field.style.backgroundImage = `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))  ,url('./img/afterBattle.jpg')`
         winMessage.style.display = 'block'
         winMessage.innerHTML = `You Won <br> gained experience: ${battleExperience} <br> Gained items: ${battleItems} <br> Gained equip: ${battleEq}` 
@@ -1505,6 +1624,7 @@ continuee.onclick = () => {
     } else {
         field.style.backgroundImage = "url('./img/goblinForest.jpg')"
         goblinKing.style.display = 'block'
+        rightArrow.style.display = 'block'
     }
     continuee.style.display = 'none'
     winMessage.style.display = 'none'
@@ -1512,6 +1632,7 @@ continuee.onclick = () => {
     enemy2.style.display = 'none'
     movement = true
     mainMenu.style.display = 'block'
+    battleEq = ''
     if (enemySpots === 1) {
         character.style.left = '30px'
     } else if (enemySpots === 2) {

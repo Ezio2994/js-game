@@ -80,8 +80,6 @@ main #goblinKing {
   height: 250px;
   left: unset;
   right: 0;
-  -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
   display: none;
 }
 
@@ -102,6 +100,7 @@ main #startGame p {
   background-color: transparent;
   display: unset;
   font-size: 16px;
+  margin: unset;
 }
 
 main #startGame span {
@@ -120,14 +119,26 @@ main #startGame button {
 }
 
 main p {
-  position: absolute;
   text-align: center;
-  left: 40%;
-  top: 20%;
   color: white;
   background-color: red;
   font-size: 32px;
   display: none;
+  margin: 0 300px;
+  position: absolute;
+  border-radius: 25px;
+}
+
+main #restart {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: 45%;
+  border-radius: 25px;
+  padding: 15px;
+  color: brown;
+  border: brown 2px solid;
+  background-color: greenyellow;
 }
 
 main article {
@@ -176,6 +187,11 @@ main #menu {
   border-radius: 20px;
   display: none;
   background: url("https://i.pinimg.com/564x/d1/89/b7/d189b7b2fd7ac770be05bb418af1adfd.jpg");
+}
+
+main #menu #closeMenu {
+  height: 40px;
+  width: 40px;
 }
 
 main #menu button {
@@ -472,6 +488,8 @@ main #enemy1 {
   cursor: pointer;
   left: 400px;
   bottom: 0;
+  width: 250px;
+  height: 250px;
   display: none;
 }
 
@@ -555,7 +573,7 @@ main #continue {
   cursor: pointer;
   width: 200px;
   height: 50px;
-  bottom: 50px;
+  bottom: 100px;
   left: 40%;
   font-size: 24px;
 }

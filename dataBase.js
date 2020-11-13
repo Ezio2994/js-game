@@ -43,7 +43,7 @@ const enemiesData = [
         LP: 20,
         MP: 20,
         ATT: 8,
-        DEF: 20,
+        DEF: 18,
         artATT: 13,
         artDEF: 7,
         exp: 8,
@@ -57,7 +57,7 @@ const enemiesData = [
         MP: 20,
         ATT: 17,
         DEF: 17,
-        artATT: 22,
+        artATT: 20,
         artDEF: 10,
         exp: 12,
         Weakness: 'Ken'
