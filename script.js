@@ -128,7 +128,6 @@ startGameButton.onclick = () => {
 }
 
 mainMenu.onclick = () => {
-    // if (menu.style.display === 'none' && train.style.display === 'none' && useItems.style.display === 'none' && equipmentMenu.style.display === 'none') {
         menu.style.display = 'block'
         mainMenu.style.display = 'none'
         movement = false
@@ -313,7 +312,7 @@ eqListButton.forEach(eq => {
                 eqImgs[2].style.display = 'none'
                 characterStats.artDEF += 5
                 characterStats.DEF += 5
-            } console.log(characterStats);
+            }
         } else if (eq.innerText.includes('Magic Sword')) {
             if (eqImgs[4].style.display === 'block' && eqImgs[5].style.display === 'none') {
                 eqImgs[4].style.display = 'none'
@@ -366,7 +365,7 @@ eqListButton.forEach(eq => {
                 eqImgs[7].style.display = 'none'
                 characterStats.ATT += 4
                 characterStats.DEF += 4
-            } console.log(characterStats);
+            }
         } else if (eq.innerText.includes('Regal Boots')) {
             if (eqImgs[7].style.display === 'block' && eqImgs[6].style.display === 'none') {
                 eqImgs[7].style.display = 'none'
@@ -383,7 +382,7 @@ eqListButton.forEach(eq => {
                 eqImgs[6].style.display = 'none'
                 characterStats.ATT += 3
                 characterStats.maxLP += 20
-            } console.log(characterStats); 
+            } 
         } if (eq.value === 'back') {
             equipmentMenu.style.display = 'none'
             menu.style.display = 'block'    
@@ -418,13 +417,11 @@ window.addEventListener('keydown', (event) => {
             x += 10;
             character.style.left = (+ x + 'px');
             character.style.transform = 'none'
-            console.log(character.style.left);         
             enemy()       
         } else if (event.keyCode === 37 && x > 0) {
             y = x -= 10
             character.style.left = (+ y + 'px');
             character.style.transform = 'scaleX(-1)'
-            console.log(character.style.left);        
             enemy()        
         }
     }
@@ -815,7 +812,6 @@ artsMenuButtons.forEach((button) => {
     button.addEventListener('click', () => {
         if (characterStats.AP >= 3) {
         currentArt = button.innerText
-        console.log(button.innerText);
         currentAction = 'art'
         action = true;
         }
@@ -1318,7 +1314,6 @@ const enemy1Turn = (enemy) => {
         } if (whichEnemy === 2) {
             setTimeout(timing, 3000)
         }
-        console.log(characterLP.innerHTML);
         messageField.style.display = 'none'
         gameOver()
         setTimeout(enemy2Turn, 3000,);
@@ -1460,7 +1455,6 @@ const gainExperience = () => {
 
 const gainItems = () => {
     let random = Math.floor(Math.random() * 5)
-    console.log(random);
     if (itemsChance < 5 && random > 1) {
         itemsBag[0].quantity ++
         battleItems = 'LP potion'
