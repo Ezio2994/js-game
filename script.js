@@ -103,13 +103,16 @@ const characterStats = {
     artDEF: 80
 }
 
+audio.muted = true
 mute.onclick = () => {
-    if (audio.muted === false) {
-        audio.muted = true
-        mute.innerHTML = '<i class="fas fa-volume-mute"></i>'
-    } else {
+    if (audio.muted === true) {
         audio.muted = false
+        audio.play()
         mute.innerHTML = '<i class="fas fa-volume-up"></i>'
+    } else {
+        audio.muted = true
+        audio.pause()
+        mute.innerHTML = '<i class="fas fa-volume-mute"></i>'
     }
 }
 
