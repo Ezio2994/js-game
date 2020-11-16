@@ -100,7 +100,7 @@ const characterStats = {
     ATT: 12,
     DEF: 8,
     artATT: 10,
-    artDEF: 80
+    artDEF: 8
 }
 
 audio.muted = true
