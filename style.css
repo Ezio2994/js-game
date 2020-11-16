@@ -72,26 +72,6 @@ main #mute {
   font-size: 32px;
 }
 
-main #arrowLeft {
-  font-size: 62px;
-  color: orange;
-  position: absolute;
-  background-color: transparent;
-  border: none;
-  left: -50px;
-  top: 150px;
-}
-
-main #arrowRight {
-  font-size: 62px;
-  color: orange;
-  position: absolute;
-  background-color: transparent;
-  border: none;
-  right: -50px;
-  top: 150px;
-}
-
 main #right {
   left: unset;
   right: -50px;

@@ -67,26 +67,6 @@ main {
         font-size: 32px;
     }
 
-    #arrowLeft{
-        font-size: 62px;
-        color: orange;
-        position: absolute;
-        background-color: transparent;
-        border: none;
-        left: -50px;
-        top: 150px;
-    }
-
-    #arrowRight{
-        font-size: 62px;
-        color: orange;
-        position: absolute;
-        background-color: transparent;
-        border: none;
-        right: -50px;
-        top: 150px;
-    }
-
     #right {
         left: unset;
         right: -50px;

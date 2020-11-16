@@ -413,32 +413,6 @@ const enemy2Data = enemiesData.map(enemy => {
     return {...enemy} 
 })
 
-const moveLeft = document.querySelector('#arrowLeft')
-const moveRight = document.querySelector('#arrowRight')
-
-moveLeft.addEventListener('touchmove', () => {
-    if (movement === true) {
-        if (x > 0) {
-            y = x -= 10
-            character.style.left = (+ y + 'px');
-            character.style.transform = 'scaleX(-1)'
-            enemy()        
-        }
-    }
-})
-
-moveRight.addEventListener('touchmove', () => {
-    console.log('ciao');
-    if (movement === true) {
-        if(x < 800) {
-            x += 10;
-            character.style.left = (+ x + 'px');
-            character.style.transform = 'none'
-            // enemy()       
-        }
-    }
-})
-
 window.addEventListener('keydown', (event) => {
     if (movement === true) {
         if(event.keyCode === 39 && x < 800) {
