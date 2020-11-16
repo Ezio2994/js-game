@@ -405,14 +405,39 @@ eqListButton.forEach(eq => {
 characterLP.innerHTML = `LP: ${characterStats.LP}/${characterStats.maxLP}`
 characterAP.innerHTML = `AP: ${characterStats.AP}/${characterStats.maxAP}`
 
-const enemy1Data = enemiesData.map(enemy => { // to make a deep copy of an array
-    return {...enemy} // spread operator
+const enemy1Data = enemiesData.map(enemy => { 
+    return {...enemy} 
 })
 
-const enemy2Data = enemiesData.map(enemy => { // to make a deep copy of an array
-    return {...enemy} // spread operator
+const enemy2Data = enemiesData.map(enemy => {
+    return {...enemy} 
 })
 
+const moveLeft = document.querySelector('#arrowLeft')
+const moveRight = document.querySelector('#arrowRight')
+
+moveLeft.addEventListener('touchmove', () => {
+    if (movement === true) {
+        if (x > 0) {
+            y = x -= 10
+            character.style.left = (+ y + 'px');
+            character.style.transform = 'scaleX(-1)'
+            enemy()        
+        }
+    }
+})
+
+moveRight.addEventListener('touchmove', () => {
+    console.log('ciao');
+    if (movement === true) {
+        if(x < 800) {
+            x += 10;
+            character.style.left = (+ x + 'px');
+            character.style.transform = 'none'
+            // enemy()       
+        }
+    }
+})
 
 window.addEventListener('keydown', (event) => {
     if (movement === true) {

@@ -31,6 +31,7 @@ body {
   -moz-user-select: -moz-none;
   -ms-user-select: none;
   user-select: none;
+  background-image: url("https://www.wallpaperflare.com/static/81/90/558/fantasy-art-artwork-brown-wooden-wallpaper.jpg");
 }
 
 main {
@@ -69,6 +70,26 @@ main #mute {
   color: orange;
   border: none;
   font-size: 32px;
+}
+
+main #arrowLeft {
+  font-size: 62px;
+  color: orange;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  left: -50px;
+  top: 150px;
+}
+
+main #arrowRight {
+  font-size: 62px;
+  color: orange;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  right: -50px;
+  top: 150px;
 }
 
 main #right {
