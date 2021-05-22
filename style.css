@@ -2,8 +2,8 @@
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: 'Gloria Hallelujah', cursive;
+  box-sizing: border-box;
+  font-family: "Gloria Hallelujah", cursive;
   font-weight: bolder;
 }
 
@@ -215,8 +215,16 @@ main #train {
   height: -moz-fit-content;
   height: fit-content;
   border: black solid 2px;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("./img/book.jpg");
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./img/book.jpg");
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.5))
+    ),
+    url("./img/book.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./img/book.jpg");
   color: white;
   background-size: cover;
   margin: 0 auto;
@@ -254,8 +262,16 @@ main #useItems {
   height: -moz-fit-content;
   height: fit-content;
   border: black solid 2px;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("https://i.pinimg.com/564x/e2/cb/99/e2cb99ae9f3745ca3b2e0ef43b143684.jpg");
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://i.pinimg.com/564x/e2/cb/99/e2cb99ae9f3745ca3b2e0ef43b143684.jpg");
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.5))
+    ),
+    url("https://i.pinimg.com/564x/e2/cb/99/e2cb99ae9f3745ca3b2e0ef43b143684.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://i.pinimg.com/564x/e2/cb/99/e2cb99ae9f3745ca3b2e0ef43b143684.jpg");
   background-position: center;
   background-size: cover;
   margin: 0 auto;
@@ -293,11 +309,11 @@ main #useItems div {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: white;
 }
 
@@ -306,8 +322,16 @@ main #equipmentMenu {
   width: 550px;
   margin: 0 auto;
   display: none;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("./img/RPG United - Dungeons & Dragons T-Shirt - The Shirt List.jpg");
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./img/RPG United - Dungeons & Dragons T-Shirt - The Shirt List.jpg");
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.5))
+    ),
+    url("./img/RPG United - Dungeons & Dragons T-Shirt - The Shirt List.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./img/RPG United - Dungeons & Dragons T-Shirt - The Shirt List.jpg");
   background-position: center;
   position: relative;
 }
@@ -327,11 +351,11 @@ main #equipmentMenu #list button {
   font-size: 14px;
   display: none;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: orange;
   border: 1px midnightblue solid;
 }
@@ -359,10 +383,10 @@ main #equipmentMenu #showEq {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
 }
 
 main #equipmentMenu #showEq h4 {
@@ -394,17 +418,25 @@ main section {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   gap: 10px;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("https://i.pinimg.com/564x/41/1b/c6/411bc69d850300da0feaa7528a1f52e0.jpg");
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://i.pinimg.com/564x/41/1b/c6/411bc69d850300da0feaa7528a1f52e0.jpg");
+  -ms-flex-align: center;
+  align-items: center;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.5))
+    ),
+    url("https://i.pinimg.com/564x/41/1b/c6/411bc69d850300da0feaa7528a1f52e0.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://i.pinimg.com/564x/41/1b/c6/411bc69d850300da0feaa7528a1f52e0.jpg");
 }
 
 main section .LAP {
@@ -421,14 +453,20 @@ main section .buttons {
 main section .buttons button {
   width: 100%;
   height: 25%;
-  background: -webkit-gradient(linear, left top, right top, from(#141e30), to(#243b55));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#141e30),
+    to(#243b55)
+  );
   background: linear-gradient(to right, #141e30, #243b55);
   color: orange;
 }
 
 main section .buttons button img {
   position: unset;
-  height: 30px;
+  height: 20px;
   width: 30px;
   margin: 0 10px;
   display: none;
@@ -436,7 +474,7 @@ main section .buttons button img {
 
 main section .buttons button #right {
   -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 main section .itemsMenu {
@@ -449,7 +487,13 @@ main section .itemsMenu {
 main section .itemsMenu button {
   width: 100%;
   height: 25%;
-  background: -webkit-gradient(linear, left top, right top, from(#141e30), to(#243b55));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#141e30),
+    to(#243b55)
+  );
   background: linear-gradient(to right, #141e30, #243b55);
   color: orange;
 }
@@ -464,14 +508,20 @@ main section .artsMenu {
 main section .artsMenu button {
   width: 100%;
   height: 25%;
-  background: -webkit-gradient(linear, left top, right top, from(#141e30), to(#243b55));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#141e30),
+    to(#243b55)
+  );
   background: linear-gradient(to right, #141e30, #243b55);
   color: orange;
 }
 
 main section .artsMenu button img {
   position: unset;
-  height: 30px;
+  height: 20px;
   width: 30px;
   margin: 0 10px;
   display: none;
@@ -546,11 +596,11 @@ main .enemiesDataContainer {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   background: transparent;
   width: 100%;
   font-size: 21px;
@@ -580,7 +630,8 @@ main #continue {
 }
 
 .slide-in-blurred-tr {
-  -webkit-animation: slide-in-blurred-tr 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+  -webkit-animation: slide-in-blurred-tr 0.6s cubic-bezier(0.23, 1, 0.32, 1)
+    both;
   animation: slide-in-blurred-tr 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
